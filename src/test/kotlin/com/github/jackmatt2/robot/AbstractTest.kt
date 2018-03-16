@@ -19,4 +19,10 @@ abstract class AbstractTest {
     fun placeRobotAtOrigin() {
         game.acceptCommand("PLACE 0,0,NORTH")
     }
+
+    fun verifyReportOutputAfterCommand(command: String, message: String) {
+        game.acceptCommand(command)
+        game.acceptCommand("REPORT")
+        outputHandler.verify(message)
+    }
 }

@@ -7,25 +7,19 @@ class Rotation : AbstractTest() {
     @Test
     fun `I can rotate the robot LEFT in a full circle`() {
         game.acceptCommand("PLACE 0,0,NORTH")
-        assertOutput("LEFT", "Output: 0,0,WEST")
-        assertOutput("LEFT", "Output: 0,0,SOUTH")
-        assertOutput("LEFT", "Output: 0,0,EAST")
-        assertOutput("LEFT", "Output: 0,0,NORTH")
+        verifyReportOutputAfterCommand("LEFT", "Output: 0,0,WEST")
+        verifyReportOutputAfterCommand("LEFT", "Output: 0,0,SOUTH")
+        verifyReportOutputAfterCommand("LEFT", "Output: 0,0,EAST")
+        verifyReportOutputAfterCommand("LEFT", "Output: 0,0,NORTH")
     }
 
     @Test
     fun `I can rotate the robot RIGHT in a full circle`() {
         game.acceptCommand("PLACE 0,0,NORTH")
-        assertOutput("RIGHT", "Output: 0,0,EAST")
-        assertOutput("RIGHT", "Output: 0,0,SOUTH")
-        assertOutput("RIGHT", "Output: 0,0,WEST")
-        assertOutput("RIGHT", "Output: 0,0,NORTH")
-    }
-
-    private fun assertOutput(command: String, message: String) {
-        game.acceptCommand(command)
-        game.acceptCommand("REPORT")
-        outputHandler.verify(message)
+        verifyReportOutputAfterCommand("RIGHT", "Output: 0,0,EAST")
+        verifyReportOutputAfterCommand("RIGHT", "Output: 0,0,SOUTH")
+        verifyReportOutputAfterCommand("RIGHT", "Output: 0,0,WEST")
+        verifyReportOutputAfterCommand("RIGHT", "Output: 0,0,NORTH")
     }
 
 }

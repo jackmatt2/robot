@@ -21,7 +21,7 @@ class Movement : AbstractTest() {
     }
 
     @Test
-    fun `I cant make the robot fall off the grid in any direction`() {
+    fun `I can't make the robot fall off the grid in any direction`() {
         game.acceptCommand("PLACE 0,0,WEST")
         game.acceptCommand("MOVE")
         outputHandler.verify("Position -1, 0 is off the grid!")
@@ -47,12 +47,6 @@ class Movement : AbstractTest() {
         repeat(3, {game.acceptCommand("MOVE")})
         game.acceptCommand("REPORT")
         outputHandler.verify("Output: 3,3,EAST")
-    }
-
-    private fun verifyReportOutputAfterCommand(command: String, message: String) {
-        game.acceptCommand(command)
-        game.acceptCommand("REPORT")
-        outputHandler.verify(message)
     }
 
 }
