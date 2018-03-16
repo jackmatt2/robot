@@ -7,17 +7,17 @@ class Movement : AbstractTest() {
     @Test
     fun `I can move the robot to the top left corner of the grid`() {
         game.acceptCommand("PLACE 0,0,NORTH")
-        assertOutput("MOVE", "Output: 0,1,NORTH")
-        assertOutput("MOVE", "Output: 0,2,NORTH")
-        assertOutput("MOVE", "Output: 0,3,NORTH")
+        verifyReportOutputAfterCommand("MOVE", "Output: 0,1,NORTH")
+        verifyReportOutputAfterCommand("MOVE", "Output: 0,2,NORTH")
+        verifyReportOutputAfterCommand("MOVE", "Output: 0,3,NORTH")
     }
 
     @Test
     fun `I can move the robot to the bottom right corner of the grid`() {
         game.acceptCommand("PLACE 0,0,EAST")
-        assertOutput("MOVE", "Output: 1,0,EAST")
-        assertOutput("MOVE", "Output: 2,0,EAST")
-        assertOutput("MOVE", "Output: 3,0,EAST")
+        verifyReportOutputAfterCommand("MOVE", "Output: 1,0,EAST")
+        verifyReportOutputAfterCommand("MOVE", "Output: 2,0,EAST")
+        verifyReportOutputAfterCommand("MOVE", "Output: 3,0,EAST")
     }
 
     @Test
@@ -30,7 +30,7 @@ class Movement : AbstractTest() {
         outputHandler.verify("Output: 3,3,EAST")
     }
 
-    private fun assertOutput(command: String, message: String) {
+    private fun verifyReportOutputAfterCommand(command: String, message: String) {
         game.acceptCommand(command)
         game.acceptCommand("REPORT")
         outputHandler.verify(message)
