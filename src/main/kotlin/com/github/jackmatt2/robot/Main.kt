@@ -16,6 +16,7 @@ fun main(args: Array<String>) {
         REPORT
         EXIT
         """)
+    println()
     runLoop@ do {
         print("> ")
         val input: String = readLine() ?: return@runLoop
