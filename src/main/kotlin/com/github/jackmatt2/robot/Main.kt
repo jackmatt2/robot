@@ -4,14 +4,13 @@ import com.github.jackmatt2.robot.output.TerminalOutputHandler
 
 fun main(args: Array<String>) {
     val outputHandler = TerminalOutputHandler()
-    val robot = Robot()
     val grid = Grid(5,5)
-    val game: Game = Game(robot, grid, outputHandler);
+    val game: Game = Game(grid, outputHandler);
     runLoop@ do {
-        print(": ")
+        outputHandler.handle(": ")
         val input: String = readLine() ?: return@runLoop
         game.acceptCommand(input)
     } while (input != "exit")
 
-    println("Bye!")
+    outputHandler.handle("Bye!")
 }

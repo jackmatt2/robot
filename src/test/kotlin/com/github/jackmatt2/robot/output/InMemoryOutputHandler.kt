@@ -9,7 +9,7 @@ class InMemoryOutputHandler(val queue: Queue<String> = ArrayDeque<String>()): Ou
     }
 
     fun verify(str: String) {
-        TestCase.assertEquals(str, queue.peek());
+        TestCase.assertEquals(str, queue.poll());
     }
 
     fun verifyNoInteractions() {
