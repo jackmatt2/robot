@@ -21,6 +21,25 @@ class Movement : AbstractTest() {
     }
 
     @Test
+    fun `I cant make the robot fall off the grid in any direction`() {
+        game.acceptCommand("PLACE 0,0,WEST")
+        game.acceptCommand("MOVE")
+        outputHandler.verify("Position -1, 0 is off the grid!")
+
+        game.acceptCommand("PLACE 0,0,SOUTH")
+        game.acceptCommand("MOVE")
+        outputHandler.verify("Position 0, -1 is off the grid!")
+
+        game.acceptCommand("PLACE 4,4,EAST")
+        game.acceptCommand("MOVE")
+        outputHandler.verify("Position 5, 4 is off the grid!")
+
+        game.acceptCommand("PLACE 4,4,NORTH")
+        game.acceptCommand("MOVE")
+        outputHandler.verify("Position 4, 5 is off the grid!")
+    }
+
+    @Test
     fun `I can move the robot to the top right corner of the grid`() {
         game.acceptCommand("PLACE 0,0,NORTH")
         repeat(3, {game.acceptCommand("MOVE")})

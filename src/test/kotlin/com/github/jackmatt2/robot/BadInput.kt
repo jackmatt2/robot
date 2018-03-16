@@ -11,4 +11,11 @@ class BadInput : AbstractTest() {
         outputHandler.verify("ERROR: Unknown command ''")
     }
 
+    @Test
+    fun `Entering an unknown command will show an error`() {
+        placeRobotAtOrigin()
+        game.acceptCommand("#$%")
+        outputHandler.verify("ERROR: Unknown command '#\$%'")
+    }
+
 }
